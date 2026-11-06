@@ -1,0 +1,54 @@
+{
+  "Mapster-Linux-amd64.deb": {
+    "version": "0.4.7",
+    "platform": "linux"
+  },
+  "Mapster-Linux-x86_64.AppImage": {
+    "version": "0.4.7",
+    "platform": "linux"
+  },
+  "Mapster-Linux-x86_64.rpm": {
+    "version": "0.4.7",
+    "platform": "linux"
+  },
+  "Mapster-Windows-Setup.exe": {
+    "version": "0.4.7",
+    "platform": "windows"
+  },
+  "Mapster-Windows.msi": {
+    "version": "0.4.7",
+    "platform": "windows"
+  },
+  "Mapster-macOS-AppleSilicon.app.tar.gz": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "Mapster-macOS-AppleSilicon.dmg": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "Mapster-macOS-Intel.app.tar.gz": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "Mapster-macOS-Intel.dmg": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "mapster-tools-linux-x86_64.tar.gz": {
+    "version": "0.4.7",
+    "platform": "linux"
+  },
+  "mapster-tools-macos-aarch64.tar.gz": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "mapster-tools-macos-x86_64.tar.gz": {
+    "version": "0.5.2",
+    "platform": "macos"
+  },
+  "mapster-tools-windows-x86_64.zip": {
+    "version": "0.4.7",
+    "platform": "windows"
+  }
+}

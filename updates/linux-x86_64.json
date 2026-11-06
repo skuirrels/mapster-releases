@@ -1,0 +1,23 @@
+{
+  "version": "0.4.7",
+  "notes": "Mapster 0.4.7",
+  "pub_date": "2026-10-20T17:41:35Z",
+  "platforms": {
+    "linux-x86_64-rpm": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UG55VG9GZ0pxRWhQMkFKdE9wS0c5bGNVUlhVRTZRQ01nT2ZWR1ZPWWR6QmhDZmoxZnBBR3B4Vy9DNnJ2SHpqQzVRRGg2Q3llZGs5cWV1RkxrY0VOZlFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3OTcyCWZpbGU6TWFwc3Rlci0wLjQuNy0xLng4Nl82NC5ycG0JdmVyc2lvbjowLjQuNwpxWnZ5NDJiR3N6VkkyWUN2R010bnMzMmRhWlZZUjk0VERBVFhJc0pOazMzRUQ0TFBXY2tBakV1Z291cmxHK242Z2llMnRkUFkxOFJjZmF4dE9RbE1DUT09Cg==",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-x86_64.rpm"
+    },
+    "linux-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UGlMVVpic2tBZHErSmkxRURnUWp6V1BBR3VZNFV6VnBFQzFBRFFZNDlFUkdWN3BhOGUwNVVnTUV6eVhCak5KVDZnM0FVcE9YTzBuQXNaK3ZEL3VIU3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3OTcyCWZpbGU6TWFwc3Rlcl8wLjQuN19hbWQ2NC5BcHBJbWFnZQl2ZXJzaW9uOjAuNC43ClNGejBvZnJ3ZEtydkZwMm8xYkJGTnE0dDd1dE45OGZzL1ZJK2VkUllaQW5NRkh3SXdFbE92TlFNazlSNk5qQTZrOUJXaFBMZjZBOVRkaVNHMXNiQUNBPT0K",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-x86_64.AppImage"
+    },
+    "linux-x86_64-appimage": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UGlMVVpic2tBZHErSmkxRURnUWp6V1BBR3VZNFV6VnBFQzFBRFFZNDlFUkdWN3BhOGUwNVVnTUV6eVhCak5KVDZnM0FVcE9YTzBuQXNaK3ZEL3VIU3dVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3OTcyCWZpbGU6TWFwc3Rlcl8wLjQuN19hbWQ2NC5BcHBJbWFnZQl2ZXJzaW9uOjAuNC43ClNGejBvZnJ3ZEtydkZwMm8xYkJGTnE0dDd1dE45OGZzL1ZJK2VkUllaQW5NRkh3SXdFbE92TlFNazlSNk5qQTZrOUJXaFBMZjZBOVRkaVNHMXNiQUNBPT0K",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-x86_64.AppImage"
+    },
+    "linux-x86_64-deb": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHY3NitVbUtoU3pyUmhxUjFGUXJKSm5GOGtUNm9JNzg0ZFF5MDRyUzBuS1ZVZjZGU1ZYRjI4RTNqWmwzSHRNY0hNekM3dmtvVU1KSEpjZVkrNVpVVVF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3OTcyCWZpbGU6TWFwc3Rlcl8wLjQuN19hbWQ2NC5kZWIJdmVyc2lvbjowLjQuNwovK2R6by9jREdlMGI0VjVxbWZkM3pXalVNQmw3cjMvTnVHU2F6OGJUWkhjRlk5Wm9UMWlRc29yLzZWbUxvMkY5Mk0yRDkyb3hnUm5pMVlTUU55OGtEdz09Cg==",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-amd64.deb"
+    }
+  }
+}

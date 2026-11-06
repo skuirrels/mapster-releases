@@ -1,0 +1,19 @@
+{
+  "version": "0.4.7",
+  "notes": "Mapster 0.4.7",
+  "pub_date": "2026-10-20T17:41:35Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHVIaUhZQWQ5N1YvNUxISUpIbmlURFE4cE9kRDcvK1gzaEd4MG1nTjl3d3cwVE96RGFaSkR0dk1TZUNncEdiTHFwSUFYVFV3OHRsY0UvQUFtMUtSWndBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3MzcwCWZpbGU6TWFwc3Rlcl8wLjQuN194NjQtc2V0dXAuZXhlCXZlcnNpb246MC40LjcKZTFFZEZrRHZldnFNVExYUzZjRVdMc1FpdWJBWVQwbGN3alJJTzJCcDB4ZHYyQjhaZDBqcnR6Wm85T3o4YVd3OVNzMFF1YnVCQmQ1OGx1V2xGWWpmREE9PQo=",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Windows-Setup.exe"
+    },
+    "windows-x86_64-nsis": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHVIaUhZQWQ5N1YvNUxISUpIbmlURFE4cE9kRDcvK1gzaEd4MG1nTjl3d3cwVE96RGFaSkR0dk1TZUNncEdiTHFwSUFYVFV3OHRsY0UvQUFtMUtSWndBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3MzcwCWZpbGU6TWFwc3Rlcl8wLjQuN194NjQtc2V0dXAuZXhlCXZlcnNpb246MC40LjcKZTFFZEZrRHZldnFNVExYUzZjRVdMc1FpdWJBWVQwbGN3alJJTzJCcDB4ZHYyQjhaZDBqcnR6Wm85T3o4YVd3OVNzMFF1YnVCQmQ1OGx1V2xGWWpmREE9PQo=",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Windows-Setup.exe"
+    },
+    "windows-x86_64-msi": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHRHbUxHUE1sTVBVeVJxMFllOG53eUREUGttRzdrNnFtM3hUQ2lXYW5IOTlscGlNNVhSNFRBbGx5N3ZMck9vNlRPZDJrNGRNOWlISzZmQ0RVQkxuSWcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTE3MzcwCWZpbGU6TWFwc3Rlcl8wLjQuN194NjRfZW4tVVMubXNpCXZlcnNpb246MC40LjcKcTZuNUZnTVdGZ1lkNVZ1ODd6UE8rUHBKY2k2YUR5OCtRazJkSGJtVEVwUmRyT3A2UGhJMEJHVjZqbC9LWXlmaEV5cDBqVU1oNHFIVzRRYlJxeWhkQUE9PQo=",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Windows.msi"
+    }
+  }
+}
