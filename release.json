@@ -1,0 +1,16 @@
+{
+  "name": "Mapster",
+  "version": "0.8.3",
+  "files": [
+    "Mapster-Windows-Setup.exe",
+    "Mapster-Windows.msi",
+    "Mapster-macOS-AppleSilicon.dmg",
+    "Mapster-macOS-Intel.dmg",
+    "Mapster-Linux-amd64.deb",
+    "Mapster-Linux-x86_64.rpm",
+    "mapster-tools-windows-x86_64.zip",
+    "mapster-tools-macos-aarch64.tar.gz",
+    "mapster-tools-macos-x86_64.tar.gz",
+    "mapster-tools-linux-x86_64.tar.gz"
+  ]
+}

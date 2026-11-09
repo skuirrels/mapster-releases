@@ -1,0 +1,15 @@
+{
+  "version": "0.8.3",
+  "notes": "Mapster 0.8.3",
+  "pub_date": "2026-11-09T23:37:38Z",
+  "platforms": {
+    "darwin-x86_64": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHZxWWx6Qmc5ZkZCb0hhNHVyd0hDWVo5UjZ0UHdCM09aY3RjcFpMenRVa2JoK1Vrdmh6U3JJa0hUajd5TDBFK05XeVZvekl2WHhJWi9haVhyOVdwZUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjY3MTg2CWZpbGU6TWFwc3Rlci5hcHAudGFyLmd6CXZlcnNpb246MC44LjMKdGNPNmQ0VGpaZEJqeFM5SEFCanFGLzhDWVI3aEhoSURTTXU1NkFTNHBJcUJSUGwzWVFyZTRwamtMTzZKd0pmektjZ0ZtY2RlWExteHhwSjcwT1F4REE9PQo=",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-macOS-Intel.app.tar.gz"
+    },
+    "darwin-x86_64-app": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHZxWWx6Qmc5ZkZCb0hhNHVyd0hDWVo5UjZ0UHdCM09aY3RjcFpMenRVa2JoK1Vrdmh6U3JJa0hUajd5TDBFK05XeVZvekl2WHhJWi9haVhyOVdwZUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjY3MTg2CWZpbGU6TWFwc3Rlci5hcHAudGFyLmd6CXZlcnNpb246MC44LjMKdGNPNmQ0VGpaZEJqeFM5SEFCanFGLzhDWVI3aEhoSURTTXU1NkFTNHBJcUJSUGwzWVFyZTRwamtMTzZKd0pmektjZ0ZtY2RlWExteHhwSjcwT1F4REE9PQo=",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-macOS-Intel.app.tar.gz"
+    }
+  }
+}

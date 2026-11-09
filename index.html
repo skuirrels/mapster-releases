@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapster · Download</title>
+<meta name="description" content="Mapster 0.8.3: Visual data mapping for XML, JSON and CSV. Installers for Windows, macOS and Linux.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #f5f7fb; --panel: #ffffff; --text: #18202f; --muted: #5d6779; --border: #dde3ec;
+    --accent: #2f6fdb; --accent-2: color-mix(in srgb, #2f6fdb 10%, #fff); --glow: color-mix(in srgb, #2f6fdb 18%, transparent);
+    --shadow: 0 10px 30px rgba(20, 40, 80, .08);
+    --amber: #f59e0b; --teal: #14b8a6; --pink: #ec4899; --blue: #3b82f6;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0c111a; --panel: #141b27; --text: #e6eaf1; --muted: #98a3b6; --border: #253043;
+      --accent: #6a9ff5; --accent-2: color-mix(in srgb, #6a9ff5 14%, #141b27); --glow: color-mix(in srgb, #6a9ff5 22%, transparent);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --amber: #fbbf24; --teal: #2dd4bf; --pink: #f472b6; --blue: #60a5fa;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+  a { color: var(--accent); }
+  code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+  .hero { position: relative; overflow: hidden; padding: 72px 0 48px; text-align: center;
+          background: radial-gradient(800px 320px at 50% -60px, var(--glow), transparent 70%); }
+  .hero::before { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+          background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+          background-size: 44px 44px; mask-image: radial-gradient(600px 260px at 50% 0, #000, transparent 75%);
+          -webkit-mask-image: radial-gradient(600px 260px at 50% 0, #000, transparent 75%); }
+  .hero .wrap { position: relative; }
+  .hero img { width: 104px; height: 104px; filter: drop-shadow(0 10px 24px var(--glow)); animation: float 6s ease-in-out infinite; }
+  @keyframes float { 50% { transform: translateY(-6px); } }
+  @media (prefers-reduced-motion: reduce) { .hero img { animation: none; } }
+  h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); margin: 14px 0 6px; letter-spacing: -.03em; }
+  .tagline { font-size: 1.2rem; color: var(--muted); max-width: 640px; margin: 0 auto 28px; }
+  .cta { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; padding: 14px 34px; border-radius: 12px;
+         background: #2f6fdb; color: #fff; text-decoration: none; font-weight: 600; font-size: 1.1rem;
+         box-shadow: 0 8px 24px var(--glow); transition: transform .15s, filter .15s; }
+  .cta small { font-weight: 400; opacity: .85; font-size: .82rem; }
+  .cta:hover { transform: translateY(-1px); filter: brightness(1.08); }
+  .version { margin-top: 16px; color: var(--muted); font-size: .9rem; }
+  .other { margin-top: 6px; font-size: .9rem; }
+  section { padding: 34px 0; }
+  h2 { font-size: 1.5rem; margin: 0 0 18px; letter-spacing: -.01em; }
+  .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); align-items: start; }
+  .card { position: relative; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 18px; box-shadow: var(--shadow); }
+  .card.mine { border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow), var(--shadow); }
+  .card header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card header svg { width: 34px; height: 34px; fill: var(--text); flex: none; }
+  .card h3 { margin: 0; font-size: 1.2rem; }
+  .card header p { margin: 0; color: var(--muted); font-size: .85rem; }
+  .badge { display: none; position: absolute; top: -11px; right: 14px; font-size: .72rem; font-weight: 600; color: #fff;
+           background: var(--accent); border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+  .card.mine .badge { display: inline-block; }
+  .files { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .dl { position: relative; display: flex; flex-direction: column; padding: 11px 44px 11px 14px; border: 1px solid var(--border); border-radius: 10px;
+        text-decoration: none; color: var(--text); background: var(--bg); transition: border-color .15s, transform .15s; }
+  .dl:hover { border-color: var(--accent); transform: translateY(-1px); }
+  .dl.primary { border-color: var(--accent); background: var(--accent-2); }
+  .dl .name { font-weight: 600; }
+  .dl .meta { font-size: .82rem; color: var(--muted); }
+  .dl .arrow { position: absolute; right: 14px; top: 50%; width: 18px; height: 18px; margin-top: -9px; fill: none;
+               stroke: var(--muted); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .dl:hover .arrow { stroke: var(--accent); }
+  details { margin: 4px 2px 0; font-size: .75rem; color: var(--muted); }
+  summary { cursor: pointer; }
+  details code { display: block; word-break: break-all; font-size: .72rem; }
+  .features { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .feature { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 16px; border-top: 3px solid var(--tone); }
+  .feature.amber { --tone: var(--amber); } .feature.teal { --tone: var(--teal); }
+  .feature.pink { --tone: var(--pink); } .feature.blue { --tone: var(--blue); }
+  .feature b { display: block; margin-bottom: 4px; }
+  .feature span { color: var(--muted); font-size: .92rem; }
+  .extras { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); list-style: none; margin: 0; padding: 0; }
+  .help { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+  .help div, .notes { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; font-size: .92rem; min-width: 0; }
+  .notes { padding: 6px 20px; font-size: 1rem; }
+  .notes h4 { margin: 16px 0 6px; }
+  .notes h4 .date { font-weight: 400; color: var(--muted); font-size: .85rem; margin-left: 6px; }
+  .notes ul { margin: 0 0 8px; padding-left: 20px; }
+  .notes li { margin: 3px 0; }
+  .help h3 { margin: 0 0 6px; font-size: 1rem; }
+  pre { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; overflow-x: auto; font-size: .8rem; }
+  .update { display: flex; gap: 14px; align-items: center; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; }
+  .update svg { width: 28px; height: 28px; flex: none; fill: none; stroke: var(--teal); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  footer { padding: 34px 0 50px; color: var(--muted); font-size: .85rem; text-align: center; }
+  @media (max-width: 520px) { .hero { padding-top: 44px; } .wrap { padding: 0 16px; } }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <div class="wrap">
+      <img src="icon.svg" alt="">
+      <h1>Mapster</h1>
+      <p class="tagline">Visual data mapping for XML, JSON and CSV. Connect structures, add functions and lookups, preview the result, generate XSLT, and open MapForce&nbsp;.mfd designs.</p>
+      <a class="cta" id="cta" href="#downloads">Download Mapster <small id="cta-sub">Windows · macOS · Linux</small></a>
+      <div class="version">Version 0.8.3 · 9 November 2026 · free and open source (MIT)</div>
+      <div class="other"><a href="#downloads">All downloads</a> · <a href="SHA256SUMS.txt">Checksums</a> · <a href="#changelog">Change log</a></div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section id="downloads">
+      <h2>Downloads</h2>
+      <div class="grid">
+      <article class="card" id="windows">
+        <span class="badge">Recommended for you</span>
+        <header>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5 10.5 4.4v7.1H3zm0 13 7.5 1.1v-7H3zM11.6 4.3 21 3v8.5h-9.4zm0 15.4L21 21v-8.4h-9.4z"/></svg>
+          <div><h3>Windows</h3><p>Windows 10 and 11, 64-bit</p></div>
+        </header>
+        <ul class="files">
+          <li>
+            <a class="dl primary" href="Mapster-Windows-Setup.exe" download data-arch="">
+              <span class="name">Windows installer</span>
+              <span class="meta">64-bit · .exe · version 0.8.1 · 21.8 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>bffac5c8e475d71341dce883cb260d45f29575b8bac9575e32d93892b061ab48</code></details>
+          </li>
+          <li>
+            <a class="dl" href="Mapster-Windows.msi" download data-arch="">
+              <span class="name">Windows MSI package</span>
+              <span class="meta">64-bit · .msi · for managed deployment · version 0.8.1 · 30.6 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>d216bec831fc66a426011f2f706914cf08964a9cc786e6458f8e00339f847a1e</code></details>
+          </li>
+        </ul>
+      </article>
+      <article class="card" id="macos">
+        <span class="badge">Recommended for you</span>
+        <header>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.5 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9s-2-.9-3.3-.9C6.1 7 4.5 8 3.6 9.6c-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6s1.8-.8 3.3-.8 2 .8 3.3.8 2.2-1.3 3-2.5c1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.4zM13.9 5.1c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+          <div><h3>macOS</h3><p>macOS 10.15 or newer</p></div>
+        </header>
+        <ul class="files">
+          <li>
+            <a class="dl primary" href="Mapster-macOS-AppleSilicon.dmg" download data-arch="arm">
+              <span class="name">Apple Silicon</span>
+              <span class="meta">M1 and later · .dmg · 27.6 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>61302d3598775e9d340b8cb16ab185cc16eac14e42ca57bf115e62009e71e805</code></details>
+          </li>
+          <li>
+            <a class="dl" href="Mapster-macOS-Intel.dmg" download data-arch="x86">
+              <span class="name">Intel</span>
+              <span class="meta">Older Macs · .dmg · 30.1 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>8a6d778c48b37750d7181c25792eb4b479e5d5952ad0d13f8a63681059011b8d</code></details>
+          </li>
+        </ul>
+      </article>
+      <article class="card" id="linux">
+        <span class="badge">Recommended for you</span>
+        <header>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c-2.2 0-3.6 1.8-3.6 4.4 0 1.5.3 2.4-.6 3.7C6.6 11.8 5 13.9 5 16.4c0 .7.1 1.3.4 1.8-.8.4-1.9.6-1.9 1.6 0 1.3 1.9 1.1 3.3 1.7 1.2.5 2.2.5 2.8-.3.8.2 1.6.3 2.4.3s1.6-.1 2.4-.3c.6.8 1.6.8 2.8.3 1.4-.6 3.3-.4 3.3-1.7 0-1-1.1-1.2-1.9-1.6.3-.5.4-1.1.4-1.8 0-2.5-1.6-4.6-2.8-6.3-.9-1.3-.6-2.2-.6-3.7C15.6 3.8 14.2 2 12 2zm-1.6 4.3c.5 0 .8.6.8 1.2 0 .3-.1.6-.2.8l-.4-.1c.1-.2.1-.4.1-.6 0-.4-.2-.7-.4-.7s-.4.3-.4.7v.2l-.4-.2v-.1c0-.7.4-1.2.9-1.2zm3.1 0c.6 0 1 .5 1 1.2 0 .2 0 .3-.1.5l-.3.1v-.4c0-.5-.3-.8-.6-.8s-.5.4-.5.8c0 .2 0 .4.1.5l-.5.2c-.1-.2-.2-.5-.2-.8 0-.7.5-1.3 1.1-1.3zM12 9.1c.9 0 2.3.6 2.3 1s-1.3 1.2-2.3 1.2-2.3-.8-2.3-1.2 1.4-1 2.3-1zm-3.1 3.5c.5 1.6 1.6 3 3.1 3s2.6-1.4 3.1-3c.8 1 1.6 2.5 1.6 3.9 0 2.4-2.1 3.4-4.7 3.4s-4.7-1-4.7-3.4c0-1.4.8-2.9 1.6-3.9z"/></svg>
+          <div><h3>Linux</h3><p>x86-64 · Ubuntu 22.04 or newer, Debian, Fedora, …</p></div>
+        </header>
+        <ul class="files">
+          <li>
+            <a class="dl primary" href="Mapster-Linux-amd64.deb" download data-arch="">
+              <span class="name">Debian / Ubuntu</span>
+              <span class="meta">.deb package · version 0.8.1 · 31.5 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>8b719632655e3680a69dcc8845389b79b475b7baca6c1e13bf832909b29026a7</code></details>
+          </li>
+          <li>
+            <a class="dl" href="Mapster-Linux-x86_64.rpm" download data-arch="">
+              <span class="name">Fedora / RHEL / openSUSE</span>
+              <span class="meta">.rpm package · version 0.8.1 · 31.5 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>6618d1c73c1c7a2e6d28d8a38217c0818119142eb10f828524efa159701da606</code></details>
+          </li>
+        </ul>
+      </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="update">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2M18.5 2v3.8h-3.8M5.5 22v-3.8h3.8"/></svg>
+        <div><b>Installed copies update themselves.</b> Mapster checks for a newer version when it starts, and Help ▸ Check for Updates checks on demand.</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What you get</h2>
+      <div class="features">
+        <div class="feature amber"><b>Drag-and-drop mapping</b><span>Schema trees for XML, JSON and CSV with sample values from your files.</span></div>
+        <div class="feature teal"><b>Auto-map</b><span>Connects matching fields by name, synonyms and structure, and validates the result.</span></div>
+        <div class="feature pink"><b>150+ functions</b><span>Strings, math, dates, grouping, sorting, filters, value-maps and your own functions.</span></div>
+        <div class="feature blue"><b>Live preview</b><span>See the output update as you edit, then save it or generate XSLT 1.0/2.0.</span></div>
+        <div class="feature amber"><b>MapForce compatible</b><span>Opens .mfd files; the engine is tested against MapForce&#39;s own output.</span></div>
+        <div class="feature teal"><b>Works with Claude</b><span>An MCP server lets Claude build, inspect and run mappings for you.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Command-line tools</h2>
+      <p>Run mappings headlessly with <code>mapster-cli</code>, or connect Claude through the <code>mapster-mcp</code> server.</p>
+      <ul class="extras">
+          <li>
+            <a class="dl" href="mapster-tools-windows-x86_64.zip" download data-arch="">
+              <span class="name">CLI + MCP server — Windows</span>
+              <span class="meta">x86-64 · .zip · version 0.8.1 · 18.6 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>d90b7df1d399386748b512133a2fc585702dfec5651888cb8104ed37ec48b037</code></details>
+          </li>
+          <li>
+            <a class="dl" href="mapster-tools-macos-aarch64.tar.gz" download data-arch="">
+              <span class="name">CLI + MCP server — macOS Apple Silicon</span>
+              <span class="meta">.tar.gz · 17.0 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>14b9deccc423296a314a43e4c5f5a5e20205f610ce2c1ccbb098c0e3acb2d0f5</code></details>
+          </li>
+          <li>
+            <a class="dl" href="mapster-tools-macos-x86_64.tar.gz" download data-arch="">
+              <span class="name">CLI + MCP server — macOS Intel</span>
+              <span class="meta">.tar.gz · 18.3 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>1e1c5d55a43559d3ce5e1ede22fa302105a3610fdc81371f8b89516132f7ba03</code></details>
+          </li>
+          <li>
+            <a class="dl" href="mapster-tools-linux-x86_64.tar.gz" download data-arch="">
+              <span class="name">CLI + MCP server — Linux</span>
+              <span class="meta">x86-64 · .tar.gz · version 0.8.1 · 18.5 MB</span>
+              <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            </a>
+            <details><summary>SHA-256</summary><code>47d6b97bcc9ed28cd51767c28fbdfd95104f721235bb0021efc1816d5cd618c9</code></details>
+          </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Install notes</h2>
+      <div class="help">
+        <div><h3>Windows</h3>Run the installer. If SmartScreen says “Windows protected your PC”, choose <b>More info → Run anyway</b> (the build is not code-signed yet). The .msi suits managed installs.</div>
+        <div><h3>macOS</h3>Open the .dmg and drag Mapster to Applications. The first time, <b>right-click the app → Open</b> (the build is not notarized yet).</div>
+        <div><h3>Linux</h3>Make the AppImage executable and run it, or install the package for your distribution.
+          <pre>sudo apt install ./Mapster-Linux-amd64.deb
+sudo dnf install ./Mapster-Linux-x86_64.rpm</pre></div>
+      </div>
+    </section>
+
+    <section id="changelog">
+      <h2>Change log</h2>
+      <div class="notes"><p>Mapster was called Mapmeister up to version 0.3.14.</p>
+<h4>0.8.3 <span class="date">9 November 2026</span></h4>
+<ul>
+<li><strong>Avro schemas split into a file per type.</strong> A schema can now refer to records, enums and fixed types defined in other <code>.avsc</code> files by name (<code>com.example.party.Customer</code>), as schemas generated one type per file, and Avro&#39;s Maven and Gradle plugins, lay them out. Each type comes from the file that defines it: <code>Customer.avsc</code> next to the file that refers to it, or in a folder named after its namespace (<code>com/example/party/</code>, or a shorter tail such as <code>party/</code>) below that folder or one of the eight above it, else any <code>.avsc</code> in that folder whose top-level type it is. Those types are written into the schema that goes into <code>.avro</code> files and generated code, so other Avro tools can read the files Mapster writes. Before, such a schema failed with &quot;unknown type&quot;.</li>
+<li>Errors in split schemas name the file they are in: a type no file defines, a file named after the type that isn&#39;t valid JSON, and a type defined in two files (with where it was first defined).</li>
+<li>A run, and code generation, read each Avro schema&#39;s files once, however many input files or strings use it.</li>
+<li>In an AI assist session, a schema takes types only from files the session may read (the mapping&#39;s folder and the files the mapping uses), so a schema can&#39;t pull other files into the conversation.</li>
+<li>Avro container files compressed with <code>bzip2</code> or <code>xz</code> now read. Avro&#39;s encoding, codecs and the text forms of its values now come from a library shared with Tessera; files read and write exactly as before.</li>
+</ul>
+<h4>0.8.2 <span class="date">9 November 2026</span></h4>
+<ul>
+<li><strong>Antigravity for AI assist.</strong> *AI ▸ AI Settings…* can now use Google&#39;s Antigravity CLI (<code>agy</code>), so requests run on your Google account&#39;s plan with Gemini or another model it lists. It gets Mapster&#39;s tools through a plugin in the scratch folder, allowed for that run only, and runs headless in its sandbox, so anything else that needs permission is refused. *Sign In…* opens it in a terminal window, since it signs in only interactively there.</li>
+<li>AI requests now run in a new temporary folder for each request that only you can read, instead of a shared, predictable one, so another user on the same computer can&#39;t put settings or hooks there for the AI tool to pick up. An answer the tool cut short (a model error or time limit partway through) is now reported as an error rather than shown as complete.</li>
+</ul>
+<h4>0.8.1 <span class="date">8 November 2026</span></h4>
+<ul>
+<li>An Avro schema saved as <code>.json</code> rather than <code>.avsc</code> now opens as an Avro component with that schema. A JSON file only counts as one when it is a named record, enum or fixed type that parses as an Avro schema; anything else still opens as JSON.</li>
+</ul>
+<h4>0.8.0 <span class="date">8 November 2026</span></h4>
+<ul>
+<li>Apache Avro sources and targets. Avro components read and write object container files (<code>.avro</code>) with the <code>null</code>, <code>deflate</code>, <code>snappy</code> and <code>zstandard</code> codecs, or Avro&#39;s JSON encoding. Their structure comes from an Avro schema (<code>.avsc</code>) or, for a source, from the schema the file holds. Records, arrays, maps, unions, enums, fixed and every logical type map to typed nodes, and decimals keep all their digits. When writing, missing fields take their schema default or null where they can. Add one with Add Structure, or by choosing Apache Avro as a component&#39;s format. MapForce has no Avro support.</li>
+<li>Avro components show Avro types in the structure (record, array, map, union, enum, <code>decimal(9,2)</code>, timestamp). The Output tab previews an <code>.avro</code> file as readable JSON, one object per line, with decimals and dates as text, and says that Save output writes the binary file. Avro&#39;s JSON encoding saves as <code>.json</code>.</li>
+<li>Avro values keep their meaning through any mapping: explicit nulls (array items, map values, top-level objects, and fields whose default is not null) stay null, decimals wider than 28 digits and doubles keep every digit through field connections, timestamps and dates far from today (such as Java&#39;s &quot;forever&quot; value) read and round-trip, and a time with an offset but no seconds converts to UTC. A field given more than one value, a float out of range, an over-long duration, duplicate enum symbols and names that break the Avro naming rules are now errors instead of silent changes. Big-decimals with a negative scale (Java&#39;s <code>1E+3</code>) read.</li>
+<li>Avro files can&#39;t make Mapster use unbounded time or memory: decimals are limited to 10,000 digits, a file to 100 million values (and a million items that hold no data), and a structure to 200,000 nodes.</li>
+<li>Auto-map is better at JSON and Avro. A JSON array&#39;s items match by the array&#39;s name, so <code>orders</code> maps to an Avro <code>Order</code> record and nested arrays such as <code>lines</code> map to each other. It no longer fills part of a map entry or a nested array whose container found no match, and a recursive node is no longer taken for a value.</li>
+</ul>
+<h4>0.7.3 <span class="date">8 November 2026</span></h4>
+<ul>
+<li>Generated XSLT stylesheets have their own XSLT tab beside Output, so they no longer replace the run&#39;s output and the two can&#39;t be confused. View ▸ XSLT shows them.</li>
+<li>Mapster asks before unsaved changes are lost: on closing the window, Quit, reloading, or opening a file from Finder. Undo now marks the mapping as changed, undoing back to the saved state makes it clean again, and edits made while a save is being written stay unsaved. Undo and Redo always take exactly one step.</li>
+<li>Numbers keep their digits. Large integers, long decimals and JSON numbers pass through exactly (<code>1.10</code> stays <code>1.10</code>, <code>12345678901234567890123</code> is no longer <code>1.2345678901234568e+22</code>), and decimal arithmetic and comparison are exact, so <code>0.1 + 0.2</code> equals <code>0.3</code>.</li>
+<li>Sort no longer crashes when a key mixes numbers and text; numbers sort before text.</li>
+<li>A variable inside a regular user-defined function is computed for each call. Before, every call reused the first call&#39;s value.</li>
+<li>An intermediate (chained) document is generated once, so auto-numbers, GUIDs and times match between it and the final target, and web service or database calls in it no longer run twice.</li>
+<li>XML Schema names are resolved by namespace. UBL-style types such as <code>cbc:IDType</code>, which extends <code>udt:IDType</code>, keep their inherited attributes (<code>schemeID</code>), and same-named simple types in two namespaces no longer crash the run.</li>
+<li>Input files that aren&#39;t UTF-8 are decoded properly: a byte-order mark or the XML declaration&#39;s encoding is honoured, a few stray bytes in a UTF-8 file no longer garble the whole file, and other files are read as Windows-1252.</li>
+<li>EDI dates and implied decimals containing non-ASCII characters no longer crash the run.</li>
+<li>Security: <code>mapster-cli serve</code> answers only the local development UI (other pages, other host names and non-JSON requests are refused; <code>--allow-origin</code> adds pages). Parameters in a database table&#39;s filter or sort order can no longer change the SQL statement. Generated C#, Java and C++ projects escape every name taken from the mapping, so a mapping can&#39;t inject code into them. AI assist reads only the mapping&#39;s folder and the files the mapping uses.</li>
+</ul>
+<h4>0.7.2 <span class="date">8 November 2026</span></h4>
+<ul>
+<li>AI assist sees large mappings. The mapping is shown to the AI in outline (a MapForce mapping that came to over 600,000 characters is now about 20,000), and it looks deeper into a structure only where it needs to. Before, the AI could not see such mappings at all.</li>
+<li>AI assist works inside user-defined functions: it can read a function&#39;s body and change it, which is where most of the logic of imported MapForce mappings lives.</li>
+<li>AI assist changes a component in place (a constant&#39;s value, a value-map&#39;s table, more inputs on a concat) instead of removing and re-adding it.</li>
+<li>A follow-up request in the AI panel builds on the previous answer&#39;s changes while they wait to be applied, and applying the newer answer applies both. Before, the earlier changes were silently dropped.</li>
+<li>AI assist no longer picks up your own Claude Code settings, hooks, plugins or <code>CLAUDE.md</code>.</li>
+<li>Validate no longer reports required nodes as missing below a node filled as a whole (a copy-all connection or a user function&#39;s structured result), nor a missing input file for a function&#39;s structured parameter. On a large MapForce mapping this took the list from 258 issues to 23.</li>
+<li>Every button and control shows its description on hover in the desktop app, where macOS never showed it. The two unlabelled toolbar buttons are now described as Tidy view and Highlight selection.</li>
+</ul>
+<h4>0.7.1 <span class="date">8 November 2026</span></h4>
+<ul>
+<li>Programs made by <code>mapster-cli build</code> on Apple Silicon Macs crashed at once with 0.7.0: <code>mapster-cli</code> is now linked with room in its header for the mapping, and <code>build</code> refuses a <code>--runtime</code> program without that room.</li>
+<li>Connections to the nodes of a user function&#39;s structured parameters and results (for example <code>ShipmentInstruction/ShipmentInstruction</code>) no longer show &quot;has no input&quot; or &quot;has no output&quot; errors in the Messages pane. A node the parameter&#39;s structure does not have is still reported.</li>
+</ul>
+<h4>0.7.0 <span class="date">7 November 2026</span></h4>
+<ul>
+<li>Oracle databases. Tables, queries, functions, procedures (also in packages) and PL/SQL blocks work as they do for the other databases, through Oracle Instant Client, which Mapster finds in your home folder, Downloads or <code>/opt/oracle</code> on macOS and Windows. MapForce designs with Oracle data sources now run.</li>
+<li><code>mapster-cli build mapping -o convert</code> writes one program with the mapping and the files it reads inside. It takes the options of <code>mapster-cli run</code> and needs nothing else installed.</li>
+<li>MongoDB collections as sources, read with a filter, projection, sort and limit set in the component&#39;s settings.</li>
+<li>Wildcard input files (<code>orders/*.xml</code>) and file names connected to a source&#39;s file name port read several files. Each is a document of its own, and the source&#39;s file name port gives each file&#39;s name, so one output can be written per input file.</li>
+<li>SOAP web services. Give a web service component a WSDL, choose an operation, and its request and response appear as structures; the call is sent in a SOAP envelope, and a SOAP fault stops the run with its message.</li>
+<li>A debugger. Output ▸ Debug Mapping records the run, and the Debugger pane steps through each value computed and each target node written, forwards or backwards, showing the values and the source nodes in context. Breakpoints on components stop it where you need.</li>
+<li>Components move only by their title bar. Press anywhere else on a component (except an expand arrow or a control) and drag to start a connection from that row.</li>
+</ul>
+<h4>0.6.0 <span class="date">7 November 2026</span></h4>
+<ul>
+<li>C#, Java and C++ code generation. File ▸ Generate Code (or <code>mapster-cli codegen --lang csharp|java|cpp</code>) writes a .NET 10 project, a Maven project or a CMake project with a typed class for the mapping: a property for each parameter and source, and a <code>Run()</code> that returns the outputs. The projects run the mapping with Mapster&#39;s own engine (the new <code>mapster_ffi</code> library, which they include), so their output is the same as Mapster&#39;s.</li>
+<li>.NET and Java function libraries. Tools ▸ Add .NET or Java Library… adds a <code>.dll</code> or <code>.jar</code>, and its public static methods appear in the Libraries pane as functions. They run in a helper process in Run, Live preview and <code>mapster-cli</code>; generated C# and Java code calls them directly.</li>
+<li>Global resources. Tools ▸ Global Resources… keeps files, folders, connection strings and text with a value for each configuration, used as <code>${global:Name}</code>. The toolbar (or <code>mapster-cli --config NAME</code>) picks the configuration, so one mapping can run against test and production files and databases.</li>
+<li>MongoDB collections as targets. Insert ▸ MongoDB Collection… writes documents with insert, update, upsert, replace or delete, typed from a JSON Schema, the collection&#39;s validator or sample documents, in one transaction where the server supports it.</li>
+<li>XML output: derived types (<code>xsi:type</code>) shown as extra nodes, <code>xsi:nil</code> (<code>set-xsi-nil</code>, <code>substitute-missing-with-xsi-nil</code>, <code>is-xsi-nil</code>), CDATA sections, and comments and processing instructions before or after an element. Generated XSLT writes them too.</li>
+</ul>
+<h4>0.5.2 <span class="date">6 November 2026</span></h4>
+<ul>
+<li>File ▸ Generate XSLT 1.0, 2.0 and 3.0 work again on mappings with large recursive schemas. Generation used to run for minutes without finishing, so the menu items seemed to do nothing; a mapping such as eDC&#39;s UniversalShipment now generates in a few seconds.</li>
+</ul>
+<h4>0.5.1 <span class="date">5 November 2026</span></h4>
+<ul>
+<li>Drag a field&#39;s name in a structure, or a port&#39;s name on a function, to start a connection; you no longer have to hit the small handle. A source starts from its output and a target from its input. The handles themselves are also easier to hit.</li>
+<li>The connection settings of a SQL Server or PostgreSQL database show its server and port as fields of their own. Leave the port empty to use 1433 (SQL Server) or 5432 (PostgreSQL); changing either updates the connection string.</li>
+<li>A named SQL Server instance with a port (<code>server\instance,15433</code>) connects straight to that port.</li>
+<li>When a database cannot be reached, the message says whether nothing answered (check the address, port and VPN) or nothing was listening on that port.</li>
+<li>The decision table settings are wider, each column is as wide as its contents, and the column names and rule numbers stay in view while you scroll.</li>
+</ul>
+<h4>0.5.0 <span class="date">5 November 2026</span></h4>
+<ul>
+<li>REST web service calls. Insert ▸ Web Service Call (REST)… calls an endpoint with Basic, OAuth 2.0 (client credentials, password, refresh token or a token you already have) or custom header authentication. A call can run once for the whole mapping or once for every input it is fed, and its request and response bodies take a JSON or XML Schema you supply, so they show as structures you can map to and from.</li>
+<li>Database mapping for SQL Server, PostgreSQL and SQLite. Insert ▸ Database Tables… reads tables as a source and writes them as a target with insert, update, merge (insert or update) and delete. Each database runs in one transaction that commits only when the whole mapping succeeds.</li>
+<li>Insert ▸ Database Call (Query, Function, Procedure)… runs an SQL query, a function or a stored procedure. Its parameters appear as inputs, and its outputs come from the result it returns: the rows, output parameters, return value and rows affected.</li>
+<li>SQL Server named instances (<code>server\instance</code>) connect through SQL Browser.</li>
+<li>Decision tables. Insert ▸ Decision Table… picks the first rule whose conditions all hold and gives its outputs. A condition can be a value, a comparison, a range such as <code>10..20</code>, or several alternatives separated by commas, and <code>-</code> matches anything.</li>
+<li>Every file component has a file name port. Connect a value to a target&#39;s file name to write one file per item, named from that value; a source&#39;s file name port gives the path it read.</li>
+<li>MapForce designs now bring in their database components, SELECT statements, stored procedure and function calls, decision tables and dynamic file names. Database passwords are not imported: the connection reads them from an environment variable such as <code>${SHIPPING_PASSWORD}</code>. Oracle databases import but cannot connect yet.</li>
+</ul>
+<h4>0.4.7 <span class="date">20 October 2026</span></h4>
+<ul>
+<li>FlexText templates can now be made and changed in Mapster. File ▸ New FlexText Template… and Open FlexText Template…, Edit FlexText Template… on a FlexText component, or Edit… in its settings open a designer. Each container shows the part of the sample text it receives as you edit, and the structure the component will have is shown beside it. Saving writes the <code>.mft</code> in MapForce&#39;s layout and refreshes the components that use it.</li>
+<li>+ Structure… now accepts a FlexText template (<code>.mft</code>), and the template field in a FlexText component&#39;s settings has a button to choose the file.</li>
+<li>Large XML Schemas load much faster. A recursive type is now expanded once instead of twice, and nodes deeper in the recursion open on demand to any depth. The HL7 v3 example schema goes from 2.5 million nodes to 155 thousand.</li>
+<li>Large structures open quickly on the canvas: branches load when you open them, so opening the HL7 v3 example sends 0.6 MB to the window instead of 20 MB. Running, validating, generating XSLT and saving still use the whole structure.</li>
+<li>The rows of the CSV, EDI and Excel settings in a component&#39;s Properties use the full width of the dialog again.</li>
+</ul>
+<h4>0.4.6 <span class="date">20 October 2026</span></h4>
+<ul>
+<li>Copy-All connections now show what they copy. Every child item under the connected row has a filled handle, and a line standing off the component joins them to that row, as in MapForce, so you no longer have to open the connection&#39;s menu to see that it copies child items.</li>
+</ul>
+<h4>0.4.5 <span class="date">19 October 2026</span></h4>
+<ul>
+<li>The installers now include the <code>mapster-cli</code> command-line tool, so mappings run from a terminal without Rust or Cargo. Choose Help ▸ Install Command-Line Tool… once to put it on your PATH: on macOS it links <code>/usr/local/bin/mapster-cli</code>, on Windows it adds Mapster&#39;s folder to your Path, and the Linux <code>.deb</code> and <code>.rpm</code> already install <code>/usr/bin/mapster-cli</code>.</li>
+<li><code>mapster-cli run --input FILE</code> reads the source from FILE instead of the input file the mapping names. Use <code>--input NAME=FILE</code> when the mapping has several sources.</li>
+<li><code>mapster-cli run --out DIR</code> and <code>mapster-cli xslt --out DIR</code> create the folder when it doesn&#39;t exist.</li>
+</ul>
+<h4>0.4.4 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>Designs with thousands of connections no longer lock the window. Connections to rows that are scrolled out of view or inside a collapsed branch are drawn as one line to the box&#39;s edge or to the branch, and hovering it says how many it stands for. ContainerASN.mfd, with 9,756 connections, now draws 49 lines.</li>
+</ul>
+<h4>0.4.3 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>Large structure trees stay responsive. A component&#39;s tree now draws only the rows in its scroll box, so expanding a branch of thousands of nodes, or opening a design such as one with 10,000 connections, no longer stalls the window.</li>
+</ul>
+<h4>0.4.2 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>Opening a mapping while another is open no longer locks the window. Components of the previous mapping with the same ids were drawn once more with the new mapping&#39;s collapsed branches, so a large structure tree opened fully for a moment; on macOS that could take minutes.</li>
+</ul>
+<h4>0.4.1 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>The macOS downloads open again. In 0.4.0, macOS reported a downloaded Mapster as damaged and offered only to move it to the Bin; the app is now signed as a whole, so it opens like any app from outside the App Store.</li>
+</ul>
+<h4>0.4.0 <span class="date">18 October 2026</span></h4>
+<ul>
+<li><strong>Mapmeister is now Mapster.</strong> The download site moves to https://skuirrels.github.io/mapster-releases/. Copies of Mapmeister don&#39;t update to Mapster: uninstall Mapmeister and install Mapster. View settings, recent files and AI settings start fresh.</li>
+<li>The command-line tools are now <code>mapster-cli</code> and <code>mapster-mcp</code>; update any MCP client configuration that starts <code>mapmeister-mcp</code>.</li>
+<li>EDI configurations go in <code>~/.mapster/edi</code> or <code>MAPSTER_EDI_CONFIG</code>; <code>~/.mapmeister/edi</code> and <code>MAPMEISTER_EDI_CONFIG</code> still work.</li>
+<li><code>.mmap</code> mapping files are unchanged.</li>
+</ul>
+<h4>0.3.14 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>Running a mapping with a large output no longer locks up the window. The output pane, and the text in the AI consent dialog, now show only the lines in view, so macOS accessibility queries stay fast.</li>
+</ul>
+<h4>0.3.13 <span class="date">18 October 2026</span></h4>
+<ul>
+<li><strong>AI assist:</strong> your own Claude Code or Codex CLI changes the mapping and you apply it. Open the AI panel with Ctrl+Shift+A, or use Fix with AI on a problem in Messages, Fix Problems with AI or Explain with AI. Nothing is sent until AI is on, and the panel lists every change before Apply Changes makes it one undoable step.</li>
+<li>The agent works on a scratch copy of the open mapping through Mapmeister&#39;s own MCP tools; turning off &quot;Input files&quot; keeps your data away from it.</li>
+<li><code>mapmeister-mcp --session</code>: a mode for agents that has no tools for creating or writing files; <code>--no-data</code> hides the tools that read input.</li>
+<li>Downloads now have stable file names, and each platform has its own update feed.</li>
+</ul>
+<h4>0.3.12 <span class="date">18 October 2026</span></h4>
+<ul>
+<li>Generated XSLT matches the engine on large real-world designs: copies through filtered structured results, typed booleans, decimals, date casts, parameter defaults and whole template arguments.</li>
+<li>Calls keep structured parameters and show their connections, and reordering a function&#39;s signature no longer swaps a call&#39;s connections.</li>
+<li>Components that open under a taller card are moved below it.</li>
+<li>Generated XSLT no longer contains empty <code>xsl:if</code> tests for template arguments.</li>
+</ul>
+<h4>0.3.11 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Large designs open readable: structure trees taller than 30 rows scroll inside their component, branches with nothing connected start collapsed, and opening never zooms out below 80%.</li>
+<li>The mouse wheel scrolls the canvas; pinch or Ctrl+wheel zooms.</li>
+<li>XSLT generation through structured function parameters and results.</li>
+</ul>
+<h4>0.3.10 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Function libraries: use the user-defined functions of other .mfd files and the named templates of XSLT stylesheets.</li>
+<li>A design with an empty main canvas opens to a Function library card.</li>
+<li><code>mapmeister-cli run --target NAME</code>.</li>
+</ul>
+<h4>0.3.9 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>File ▸ Close (Ctrl+W) closes the open mapping, asking before unsaved changes are discarded.</li>
+</ul>
+<h4>0.3.8 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>File ▸ Recent: the last 10 mappings you opened.</li>
+</ul>
+<h4>0.3.7 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Automatic updates: Mapmeister checks for a newer version at start-up, and Help ▸ Check for Updates checks on demand.</li>
+</ul>
+<h4>0.3.6 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>XSLT 3.0 generation, including JSON sources and targets. The XSLT button remembers the chosen version.</li>
+<li>REST web service calls. Requests are only made on Run, never in previews.</li>
+<li>Variables from newer MapForce designs import correctly.</li>
+</ul>
+<h4>0.3.5 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>New toolbar: labelled insert buttons, Auto-map, Validate, Auto-connect and Live preview, a Run button and an XSLT menu.</li>
+</ul>
+<h4>0.3.4 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Fixed menus stacking into one box when opened.</li>
+</ul>
+<h4>0.3.3 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Menu bar (File, Edit, Insert, Connection, Output, View, Help) above the toolbar.</li>
+</ul>
+<h4>0.3.2 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>The Mapmeister view shows constants inline at their ports and lays busy mappings out in columns.</li>
+<li>Selecting components colours their connections, traced back to their sources and on to their targets.</li>
+</ul>
+<h4>0.3.1 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>MapForce-style connection editing: Ctrl-drag to copy, move child connections, replace or duplicate inputs, tooltips, alignment guides and highlighted selections.</li>
+<li>Drag either end of a connection to another port.</li>
+<li>Icon toolbar, and in-app dialogs instead of browser prompts.</li>
+</ul>
+<h4>0.3.0 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>EDI X12 and EDIFACT components, and MapForce context menus.</li>
+<li>Excel 2007+ (.xlsx) sources and targets.</li>
+<li>Fixed-length text, FlexText templates, HL7 v2, TRADACOMS and SAP IDoc components, and &quot;parse string&quot; components.</li>
+<li>Growable <code>datetime-add</code> and <code>subtract</code> functions, and typed results of user-defined functions.</li>
+<li>About dialog.</li>
+<li>Wider MapForce import and engine coverage: 73 of MapForce&#39;s 135 example outputs now match exactly (up from 29).</li>
+</ul>
+<h4>0.2.0 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>Duplicated inputs, variables and joins from MapForce designs, in the engine and the editor.</li>
+<li>A download page for the installers.</li>
+</ul>
+<h4>0.1.0 <span class="date">17 October 2026</span></h4>
+<ul>
+<li>First release: visual mapping between XML, JSON and CSV, with functions, lookups, live preview, XSLT generation and MapForce .mfd import.</li>
+<li>Installers for Windows, macOS and Linux, plus <code>mapmeister-cli</code> and <code>mapmeister-mcp</code>.</li>
+</ul></div>
+    </section>
+  </main>
+
+  <footer>Mapster 0.8.3 · built from a319f23 · MIT License · Mapster is an independent project and is not affiliated with Altova. MapForce is a trademark of Altova GmbH.</footer>
+
+<script>
+  // Highlight the visitor's system and point the main button at its recommended installer.
+  (function () {
+    var ua = navigator.userAgent || "";
+    var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+    var os = /Win/i.test(platform + ua) ? "windows" : /Mac|iPhone|iPad/i.test(platform + ua) ? "macos" : /Linux|X11|CrOS/i.test(platform + ua) ? "linux" : null;
+    var card = os && document.getElementById(os);
+    if (!card) return;
+    card.classList.add("mine");
+    var pick = card.querySelector(".dl.primary") || card.querySelector(".dl");
+    var finish = function (link) {
+      var cta = document.getElementById("cta");
+      cta.href = link.getAttribute("href");
+      cta.setAttribute("download", "");
+      cta.firstChild.textContent = "Download for " + card.querySelector("h3").textContent + " ";
+      var meta = link.querySelector(".meta").textContent.split(" · ");
+      document.getElementById("cta-sub").textContent = link.querySelector(".name").textContent + " · " + meta[meta.length - 1];
+    };
+    // Apple Silicon vs Intel: ask the browser when it can tell, otherwise assume Apple Silicon.
+    if (os === "macos" && navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
+      navigator.userAgentData.getHighEntropyValues(["architecture"]).then(function (v) {
+        finish(card.querySelector('.dl[data-arch="' + (v.architecture === "x86" ? "x86" : "arm") + '"]') || pick);
+      }).catch(function () { finish(pick); });
+    } else {
+      finish(pick);
+    }
+  })();
+</script>
+</body>
+</html>

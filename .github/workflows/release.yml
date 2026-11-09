@@ -1,0 +1,29 @@
+name: GitHub release
+on:
+  push:
+    branches: [gh-pages]
+permissions:
+  contents: write
+concurrency:
+  group: release
+  cancel-in-progress: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish the downloads as the latest release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          name=$(jq -r .name release.json)
+          version=$(jq -r .version release.json)
+          tag="v$version"
+          mapfile -t files < <(jq -r '.files[]' release.json)
+          if [ ${#files[@]} -eq 0 ]; then echo "::error::no downloads to publish"; exit 1; fi
+          gh release delete "$tag" --yes --cleanup-tag 2>/dev/null || true
+          gh release create "$tag" --title "$name $version" --notes-file RELEASE-NOTES.md --latest --target "$GITHUB_SHA" "${files[@]}"
+          # Only the newest release is kept.
+          gh release list --limit 100 --json tagName -q '.[].tagName' | grep -vx "$tag" | while read -r old; do
+            gh release delete "$old" --yes --cleanup-tag
+          done

@@ -1,0 +1,15 @@
+{
+  "version": "0.8.1",
+  "notes": "Mapster 0.8.1",
+  "pub_date": "2026-11-09T09:52:40Z",
+  "platforms": {
+    "linux-x86_64-rpm": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UHNGbFVuTmU3aUt0NXZ4VXc4d2UyZFRIZmlFdlBCNlFyUVpuNkUrdi9pSnVoeXp2S281WFFjWmZGUGxZNlVSQlZuaHk3bE5nUldnYUIvU2RRZldvU0FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjE3NjU4CWZpbGU6TWFwc3Rlci0wLjguMS0xLng4Nl82NC5ycG0JdmVyc2lvbjowLjguMQplUXEvWld5azZoNGFUdC9KOC81Q1JZWVlKQndIWmJwcW5TSUpaNXVjZUR2MTNYYlM3L2xEVEM1WUcxemtiN3dvbi9rMXpQNkladm5idjVVeE9LQW1DUT09Cg==",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-x86_64.rpm"
+    },
+    "linux-x86_64-deb": {
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVUNjhnSk8rNXV5UGpaUm5FQ1dyc1UrK1NTNzRBYzBRRUQ0TUVORmdJQVdLYzF3WTBYakxZVktlYXpWWldvNHRYQlpXZFR5REd6OVhsNkdxYXo2T1ZuK0pzOFhGYmlldGc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk0MjE3NjU4CWZpbGU6TWFwc3Rlcl8wLjguMV9hbWQ2NC5kZWIJdmVyc2lvbjowLjguMQpVM2ExWmhUZDBCcUx5clQ1U1V4aEhJTERnNW0wcVpOSkVrSDJMWHhtdzJGMnEyd3kyYmt4UVZveHU5cVJhQ1ZrMFljZVZpaHRPclVFY0cwTUI1K0NCQT09Cg==",
+      "url": "https://skuirrels.github.io/mapster-releases/Mapster-Linux-amd64.deb"
+    }
+  }
+}
